@@ -31,7 +31,6 @@ const LoginForm: React.FC = () => {
             const { id, access_token, refresh_token, email } = response.data;
             localStorage.setItem("id", id);
             localStorage.setItem("token", access_token);
-            localStorage.setItem("email", email);
             localStorage.setItem("user_id", id);
             toast.success("Login Successful!");
             setFormValues({});

@@ -18,7 +18,6 @@ const Dashboard: React.FC = () => {
     const authToken = localStorage.getItem("token");
     const userId = localStorage.getItem("id");
     const { selected } = useSidebarStore()
-    // const [userDetails, setUserDetails] = useState<any>(null);
     const setUserDetails = useUserStore((state) => state.setUserDetails);
 
     useEffect(() => {
