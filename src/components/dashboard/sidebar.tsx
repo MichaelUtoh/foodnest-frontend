@@ -3,9 +3,11 @@ import { RiHomeLine, RiHome6Fill } from "react-icons/ri";
 import { IoSettingsOutline, IoSettingsSharp } from "react-icons/io5";
 import { HiUserCircle, HiOutlineUserCircle } from "react-icons/hi";
 import { BsCartDashFill, BsCartDash } from "react-icons/bs";
+import useSidebarStore from '../../../store/sidebarStore';
 
 
 const Sidebar = () => {
+    const { selected, setSelected } = useSidebarStore()
     const menuItems = [
         {
             name: "Home",
@@ -33,6 +35,7 @@ const Sidebar = () => {
 
     const handleItemClick = (name: string) => {
         setActiveItem(name);
+        setSelected(name);
     };
 
     return (
@@ -45,8 +48,7 @@ const Sidebar = () => {
                         {activeItem === item.name ? item.activeIcon : item.inactiveIcon}
                     </div>
                 </div>
-            ))
-            }
+            ))}
 
         </div >
     )

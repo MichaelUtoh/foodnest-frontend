@@ -32,7 +32,7 @@ const RegisterForm: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center mx-auto h-screen w-7/12">
+        <div className="flex flex-col items-center justify-center mx-auto h-screen w-4/12">
             <div>
 
                 <p className='text-[2rem]'>Create Account</p>
