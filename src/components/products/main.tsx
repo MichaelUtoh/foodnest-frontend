@@ -39,7 +39,7 @@ const DashboardProducts = () => {
                             <p><IoIosArrowDown className='mx-4' /></p>
                         </div>
 
-                        <div className='flex justify-between py-2'>
+                        <div className='flex items-center justify-between p-2'>
                             <input type="checkbox" name="category" id="category" />
                             <p>Yaya Toure</p>
                         </div>
@@ -50,8 +50,8 @@ const DashboardProducts = () => {
                 <div className='grid grid-cols-4 gap-2 overflow-scroll w-10/12'>
                     {products.map((product) => (
                         <div className='bg-white cursor-pointer flex flex-col justify-end h-72 p-4' key={product.id}>
-                            <p className='my-2 text-left'>{product.name}</p>
-                            <div className='flex justify-between'>
+                            <p className='my-2 text-left text-xl'>{product.name}</p>
+                            <div className='flex items-center justify-between'>
                                 <p className={`${product.status === 'available' ? `bg-green-50 border-green-300 text-green-700` : `bg-gray-200 border-gray-300 text-stone-600`} border p-1 text-xs w-4/12`}>{product.status}</p>
                                 <p>₦{product.price_per_unit}</p>
                             </div>
