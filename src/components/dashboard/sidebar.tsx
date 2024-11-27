@@ -51,7 +51,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className='border-r border-gray-300 flex flex-col items-center justify-between pt-10 p-2 w-1/12'>
+        <div className='border-r border-gray-300 flex flex-col items-center h-[850px] justify-between pt-10 p-2 w-1/12'>
             <div>
                 {menuItems.map((item) => (
                     <div key={item.name} onClick={() => handleItemClick(item.name)}>
