@@ -6,7 +6,7 @@ interface SidebarState {
 }
 
 const useSidebarStore = create<SidebarState>((set) => ({
-    selected: "Home",
+    selected: "dashboard",
     setSelected: (name) => set({ selected: name }),
 }));
 

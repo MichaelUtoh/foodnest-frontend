@@ -12,8 +12,9 @@ import DashboardMain from "../dashboard/main";
 import DashboardProfile from "../profile/main";
 import DashboardSettings from "../settings/Main";
 import useUserStore from "../../../store/userStore";
+import Products from "../products/main";
 
-const Dashboard: React.FC = () => {
+const Product: React.FC = () => {
     const navigate = useNavigate();
     const authToken = localStorage.getItem("token");
     const userId = localStorage.getItem("id");
@@ -70,11 +71,11 @@ const Dashboard: React.FC = () => {
             <NavBar />
             <div className="flex">
                 <Sidebar />
-                {true && <DashboardMain />}
+                {true && <Products />}
 
             </div>
         </div >
     );
 };
 
-export default Dashboard;
+export default Product;

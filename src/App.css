@@ -5,3 +5,31 @@ body {
   height: 100vh;
   /* max-width: 1280px; */
 }
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  /* width: 20px; */
+  /* height: 20px; */
+  border: 1px solid #212121;
+  /* border-radius: 4px; */
+  /* outline: none; */
+  /* cursor: pointer; */
+}
+
+input[type="checkbox"]:checked {
+  background-color: #bbf7d0;
+  /* Change this to your preferred color */
+  border-color: #212121;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓';
+  /* Unicode checkmark */
+  color: #212121;
+  font-size: 16px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
