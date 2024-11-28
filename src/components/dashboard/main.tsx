@@ -14,7 +14,7 @@ const DashboardMain = () => {
     ];
 
     return (
-        <div className="flex flex-col py-4 p-6 w-full">
+        <div className="border-l border-gray-300 flex flex-col py-4 p-6 w-full">
 
 
             <div className="flex items-end justify-between">

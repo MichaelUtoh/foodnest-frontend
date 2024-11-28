@@ -5,8 +5,11 @@ import WelcomeBox from '../navigation/Welcome';
 import SearchBox from '../navigation/Search';
 import { Product } from '../types/products';
 import { IoIosArrowDown } from "react-icons/io";
+import { getStatusClass, toTitle } from '../dashboard/helpers';
 
-const DashboardProducts = () => {
+const Products = () => {
+    const productCategories = ['beans', 'rice', 'yam', 'flour', 'cassava', 'mango', 'orange', 'watermelon', 'locust beans']
+    const productStatus = ['available', 'unavailable']
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
@@ -23,36 +26,55 @@ const DashboardProducts = () => {
     }, [])
 
     return (
-        <div className="flex flex-col py-4 p-6 w-full">
-
-
+        <div className="border-l border-gray-300 flex flex-col py-4 p-6 w-full">
             <div className="flex items-end justify-between">
                 <WelcomeBox />
                 <SearchBox />
             </div>
 
             <div className='flex mt-4'>
-                <div className='flex flex-wrap mr-2 w-2/12'>
-                    <div className='border border-stone-200 h-56 flex flex-col w-full'>
-                        <div className='flex items-center justify-between'>
-                            <p>Category</p>
+                <div className='bg-white flex flex-wrap mr-2 w-2/12'>
+                    <div className='h-56 flex flex-col w-full'>
+                        <div className='border-b border-gray-300 flex items-center justify-between m-2 pb-3'>
+                            <p className='text-sm uppercase'>Category</p>
                             <p><IoIosArrowDown className='mx-4' /></p>
                         </div>
 
-                        <div className='flex items-center justify-between p-2'>
-                            <input type="checkbox" name="category" id="category" />
-                            <p>Yaya Toure</p>
+                        {productCategories.map((cat) => (
+                            <div className='flex items-center justify-between px-2 py-1'>
+                                <div className='flex items-center justify-between'>
+                                    <input type="checkbox" name="category" id="category" className='cursor-pointer h-[20px] w-[20px]' />
+                                    <p className='font-[300] mx-2'>{toTitle(cat)}</p>
+                                </div>
+                                <p></p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className='h-56 flex flex-col w-full'>
+                        <div className='border-b border-gray-300 flex items-center justify-between m-2 pb-3'>
+                            <p className='text-sm uppercase'>Status</p>
+                            <p><IoIosArrowDown className='mx-4' /></p>
                         </div>
 
+                        {productStatus.map((cat) => (
+                            <div className='flex items-center justify-between px-2 py-1'>
+                                <div className='flex items-center justify-between'>
+                                    <input type="checkbox" name="category" id="category" className='cursor-pointer h-[20px] w-[20px]' />
+                                    <p className='font-[300] mx-2'>{toTitle(cat)}</p>
+                                </div>
+                                <p></p>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
-                <div className='grid grid-cols-4 gap-2 overflow-scroll w-10/12'>
+                <div className='grid grid-cols-4 gap-2 h-[780px] overflow-scroll w-10/12'>
                     {products.map((product) => (
-                        <div className='bg-white cursor-pointer flex flex-col justify-end h-72 p-4' key={product.id}>
+                        <div className='bg-white cursor-pointer flex flex-col hover:shadow-sm justify-end h-[360px] p-4' key={product.id}>
                             <p className='my-2 text-left text-xl'>{product.name}</p>
                             <div className='flex items-center justify-between'>
-                                <p className={`${product.status === 'available' ? `bg-green-50 border-green-300 text-green-700` : `bg-gray-200 border-gray-300 text-stone-600`} border p-1 text-xs w-4/12`}>{product.status}</p>
+                                <p className={`${getStatusClass(product.status)} border p-1 text-xs w-4/12`}>{product.status}</p>
                                 <p>₦{product.price_per_unit}</p>
                             </div>
                         </div>
@@ -64,4 +86,4 @@ const DashboardProducts = () => {
     )
 }
 
-export default DashboardProducts
+export default Products

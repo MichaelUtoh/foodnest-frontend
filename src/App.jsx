@@ -5,6 +5,9 @@ import VerifyForm from './components/authentication/VerifyForm'
 import './App.css'
 import NotFound from "./components/authentication/NotFound";
 import Dashboard from "./components/authentication/Dashboard";
+import Product from "./components/authentication/Products";
+import Profile from "./components/authentication/Profile";
+import Settings from "./components/authentication/Settings";
 
 function App() {
 
@@ -15,6 +18,9 @@ function App() {
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/register" element={<VerifyForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/products" element={<Product />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
