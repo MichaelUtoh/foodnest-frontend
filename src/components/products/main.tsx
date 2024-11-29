@@ -4,7 +4,6 @@ import axios from 'axios'
 import WelcomeBox from '../navigation/Welcome';
 import SearchBox from '../navigation/Search';
 import { Product } from '../types/products';
-import { IoIosArrowDown } from "react-icons/io";
 import { getStatusClass, toTitle } from '../dashboard/helpers';
 import { ProductCard } from './cards';
 
@@ -101,11 +100,14 @@ const Products = () => {
                 </div>
 
                 {/* Products Grid */}
-                <div className='custom-card-wrap h-[780px] overflow-scroll w-10/12'>
+                {products.length > 0 ? <div className='custom-card-wrap h-[780px] overflow-scroll w-10/12'>
                     {products.map((product) => (
                         <ProductCard key={product?.id} product={product} getStatusClass={getStatusClass} />
                     ))}
-                </div>
+                </div> : <div className='bg-white flex flex-col h-[780px] items-center justify-center w-10/12'>
+                    <img src="/src/assets/icons/foodbasket.svg" alt="Product Icon" className="w-40" />
+                    <p className='font-[300] text-xl'>No products found</p>
+                </div>}
             </div>
 
         </div>
