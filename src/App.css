@@ -9,12 +9,7 @@ body {
 input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
-  /* width: 20px; */
-  /* height: 20px; */
   border: 1px solid #212121;
-  /* border-radius: 4px; */
-  /* outline: none; */
-  /* cursor: pointer; */
 }
 
 input[type="checkbox"]:checked {
@@ -32,4 +27,27 @@ input[type="checkbox"]:checked::after {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.custom-card-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: .5rem;
+}
+
+.custom-card {
+  /* background-color: azure; */
+}
+
+@media screen and (max-width: 768px) {
+  .custom-card-wrap {
+    grid-column: span 2;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .custom-filter-wrap {
+    display: none;
+  }
 }

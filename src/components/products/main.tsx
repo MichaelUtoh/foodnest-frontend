@@ -6,11 +6,26 @@ import SearchBox from '../navigation/Search';
 import { Product } from '../types/products';
 import { IoIosArrowDown } from "react-icons/io";
 import { getStatusClass, toTitle } from '../dashboard/helpers';
+import { ProductCard } from './cards';
 
 const Products = () => {
     const productCategories = ['beans', 'rice', 'yam', 'flour', 'cassava', 'mango', 'orange', 'watermelon', 'locust beans']
     const productStatus = ['available', 'unavailable']
     const [products, setProducts] = useState<Product[]>([]);
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
+
+    const handleCheckboxChange = (type: "category" | "status", value: string) => {
+        if (type === "category") {
+            setSelectedCategories((prev) =>
+                prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
+            );
+        } else if (type === "status") {
+            setSelectedStatuses((prev) =>
+                prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
+            );
+        }
+    };
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -33,17 +48,26 @@ const Products = () => {
             </div>
 
             <div className='flex mt-4'>
-                <div className='bg-white flex flex-wrap mr-2 w-2/12'>
+
+                {/* Filters */}
+                <div className='bg-white custom-filter-wrap sm:hidden md:flex flex-wrap mr-2 max-w-2/12 min-w-2/12'>
                     <div className='h-56 flex flex-col w-full'>
                         <div className='border-b border-gray-300 flex items-center justify-between m-2 pb-3'>
                             <p className='text-sm uppercase'>Category</p>
-                            <p><IoIosArrowDown className='mx-4' /></p>
+                            {/* <p><IoIosArrowDown className='mx-4' /></p> */}
                         </div>
 
                         {productCategories.map((cat) => (
-                            <div className='flex items-center justify-between px-2 py-1'>
+                            <div key={cat} className='flex items-center justify-between px-2 py-1'>
                                 <div className='flex items-center justify-between'>
-                                    <input type="checkbox" name="category" id="category" className='cursor-pointer h-[20px] w-[20px]' />
+                                    <input
+                                        type="checkbox"
+                                        name="category"
+                                        id={`category-${cat}`}
+                                        checked={selectedCategories.includes(cat)}
+                                        className='cursor-pointer h-[20px] w-[20px]'
+                                        onChange={() => handleCheckboxChange("category", cat)}
+                                    />
                                     <p className='font-[300] mx-2'>{toTitle(cat)}</p>
                                 </div>
                                 <p></p>
@@ -54,14 +78,21 @@ const Products = () => {
                     <div className='h-56 flex flex-col w-full'>
                         <div className='border-b border-gray-300 flex items-center justify-between m-2 pb-3'>
                             <p className='text-sm uppercase'>Status</p>
-                            <p><IoIosArrowDown className='mx-4' /></p>
+                            {/* <p><IoIosArrowDown className='mx-4' /></p> */}
                         </div>
 
-                        {productStatus.map((cat) => (
-                            <div className='flex items-center justify-between px-2 py-1'>
+                        {productStatus.map((stt) => (
+                            <div key={stt} className='flex items-center justify-between px-2 py-1'>
                                 <div className='flex items-center justify-between'>
-                                    <input type="checkbox" name="category" id="category" className='cursor-pointer h-[20px] w-[20px]' />
-                                    <p className='font-[300] mx-2'>{toTitle(cat)}</p>
+                                    <input
+                                        type="checkbox"
+                                        name="status"
+                                        id={`status-${stt}`}
+                                        checked={selectedStatuses.includes(stt)}
+                                        className='cursor-pointer h-[20px] w-[20px]'
+                                        onChange={() => handleCheckboxChange("status", stt)}
+                                    />
+                                    <p className='font-[300] mx-2'>{toTitle(stt)}</p>
                                 </div>
                                 <p></p>
                             </div>
@@ -69,15 +100,10 @@ const Products = () => {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-4 gap-2 h-[780px] overflow-scroll w-10/12'>
+                {/* Products Grid */}
+                <div className='custom-card-wrap h-[780px] overflow-scroll w-10/12'>
                     {products.map((product) => (
-                        <div className='bg-white cursor-pointer flex flex-col hover:shadow-sm justify-end h-[360px] p-4' key={product.id}>
-                            <p className='my-2 text-left text-xl'>{product.name}</p>
-                            <div className='flex items-center justify-between'>
-                                <p className={`${getStatusClass(product.status)} border p-1 text-xs w-4/12`}>{product.status}</p>
-                                <p>₦{product.price_per_unit}</p>
-                            </div>
-                        </div>
+                        <ProductCard key={product?.id} product={product} getStatusClass={getStatusClass} />
                     ))}
                 </div>
             </div>

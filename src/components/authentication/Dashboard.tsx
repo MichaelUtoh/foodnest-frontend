@@ -50,21 +50,6 @@ const Dashboard: React.FC = () => {
         return null;
     }
 
-    // const renderComponent = () => {
-    //     switch (selected) {
-    //         case "Home":
-    //             return <DashboardMain />;
-    //         case "Profile":
-    //             return <DashboardProfile />;
-    //         case "Settings":
-    //             return <DashboardSettings />;
-    //         case "Market":
-    //             return <DashboardProducts />;
-    //         default:
-    //             return <DashboardMain />;
-    //     }
-    // };
-
     return (
         <div>
             <NavBar />
