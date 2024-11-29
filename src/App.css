@@ -14,13 +14,11 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   background-color: #bbf7d0;
-  /* Change this to your preferred color */
   border-color: #212121;
 }
 
 input[type="checkbox"]:checked::after {
   content: '✓';
-  /* Unicode checkmark */
   color: #212121;
   font-size: 16px;
   position: relative;
@@ -35,8 +33,16 @@ input[type="checkbox"]:checked::after {
   gap: .5rem;
 }
 
-.custom-card {
-  /* background-color: azure; */
+.custom-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 860px) {
+  .custom-header {
+    background-color: #bbf7d0;
+  }
 }
 
 @media screen and (max-width: 768px) {

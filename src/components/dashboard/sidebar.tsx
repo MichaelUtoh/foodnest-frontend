@@ -49,7 +49,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className='flex flex-col items-center h-[850px] justify-between pt-10 p-2 w-1/12'>
+        <div className='flex flex-col items-center h-[850px] justify-between pt-10 p-2 w-[80px]'>
             <div>
                 {menuItems.map((item) => (
                     <div key={item.name} onClick={() => handleItemClick(item.name)}>
@@ -62,7 +62,7 @@ const Sidebar = () => {
                 ))}
             </div>
 
-            <div className='flex-grow'></div>
+            {/* <div className='flex-grow'></div> */}
 
             {/* LOGOUT */}
             <div className='cursor-pointer'>

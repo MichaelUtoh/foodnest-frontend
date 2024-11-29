@@ -21,7 +21,7 @@ export const getStatusClass = (status: string) => {
             return 'bg-green-50 border-green-300 text-green-700';
         case 'unavailable':
             return 'bg-gray-200 border-gray-300 text-stone-600';
-        case 'restock':
+        case 'out of stock':
             return 'bg-yellow-50 border-yellow-300 text-yellow-700';
         default:
             return 'bg-green-50 border-green-300 text-green-700'; // Default classes for unknown statuses

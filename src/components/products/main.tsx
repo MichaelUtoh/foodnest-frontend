@@ -42,7 +42,7 @@ const Products = () => {
 
     return (
         <div className="border-l border-gray-300 flex flex-col py-4 p-6 w-full">
-            <div className="flex items-end justify-between">
+            <div className="custom-header">
                 <WelcomeBox />
                 <SearchBox />
             </div>
