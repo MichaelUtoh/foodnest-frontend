@@ -46,7 +46,8 @@ input[type="checkbox"]:checked::after {
 
 @media screen and (max-width: 860px) {
   .custom-header {
-    background-color: #bbf7d0;
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 
