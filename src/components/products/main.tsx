@@ -104,10 +104,12 @@ const Products = () => {
                     {products.map((product) => (
                         <ProductCard key={product?.id} product={product} getStatusClass={getStatusClass} />
                     ))}
-                </div> : <div className='bg-white flex flex-col h-[780px] items-center justify-center w-10/12'>
-                    <img src="/src/assets/icons/foodbasket.svg" alt="Product Icon" className="w-40" />
-                    <p className='font-[300] text-xl'>No products found</p>
-                </div>}
+                </div> :
+                    <div className='bg-white flex flex-col h-[780px] items-center justify-center w-10/12'>
+                        <img src="/src/assets/icons/foodbasket.svg" alt="Product Icon" className="w-40" />
+                        <p className='font-[300] text-xl'>No products found</p>
+                    </div>
+                }
             </div>
 
         </div>

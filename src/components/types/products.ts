@@ -11,3 +11,8 @@ export interface Product {
     unit: string;
     status: string;
 }
+
+export type ProductCardType = {
+    product: Product;
+    getStatusClass: (status: string) => string
+}
