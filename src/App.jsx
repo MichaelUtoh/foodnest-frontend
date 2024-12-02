@@ -8,7 +8,7 @@ import Dashboard from "./components/authentication/Dashboard";
 import Product from "./components/authentication/Products";
 import Profile from "./components/authentication/Profile";
 import Settings from "./components/authentication/Settings";
-import SingleProduct from "./components/products/item";
+import SingleProduct from "./components/products/detail";
 
 function App() {
 

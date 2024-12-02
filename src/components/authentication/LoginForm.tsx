@@ -9,6 +9,7 @@ const LoginForm: React.FC = () => {
     const inputForm = ['Email', 'Password']
     const [formValues, setFormValues] = useState<{ [key: string]: string | undefined }>({});
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const handleInputChange = (label: string, value: string) => {
@@ -46,6 +47,10 @@ const LoginForm: React.FC = () => {
 
     };
 
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
+
     return (
         <div className="flex flex-col items-center justify-center mx-auto h-screen w-4/12">
             <div>
@@ -57,12 +62,13 @@ const LoginForm: React.FC = () => {
             <form onSubmit={handleSubmit} className="w-11/12">
                 {
                     inputForm.map((label) => (
-                        <div key={label}>
+                        <div className="" key={label}>
                             <div className='flex flex-col mt-5 w-full'>
                                 <p className='mb-1 text-left'>{label}</p>
+
                                 <input
                                     className={'border border-gray-400 bg-transparent mr-2 outline-none p-2'}
-                                    type={label.toLowerCase() === "password" ? "password" : "text"}
+                                    type={label.toLowerCase() === "password" && !showPassword ? "password" : "text"}
                                     value={formValues[label] || ""}
                                     onChange={(e) => handleInputChange(label, e.target.value)}
                                     placeholder={label}
@@ -71,9 +77,14 @@ const LoginForm: React.FC = () => {
                         </div>
                     ))
                 }
-                <p className="mt-2 text-left text-sm text-gray-600">Forgot password?</p>
+
+                <div className="flex justify-between">
+                    <p className="mt-2 text-left text-sm text-gray-600">Forgot password?</p>
+                    <p className="mt-2 text-left text-sm text-gray-600" onClick={togglePasswordVisibility}>{showPassword ? "👁️" : "👁️‍🗨️"}</p>
+                </div>
+
                 <div>
-                    <button className="bg-[#212121] hover:bg-[#212121] mt-5 p-3 text-white w-full" disabled={loading} type="submit">
+                    <button className="bg-[#212121] hover:bg-[#212121] mt-5 p-3 text-white w-full                                                                                                                                                                                                    " disabled={loading} type="submit">
                         {loading ? "Submitting..." : "Submit"}
                     </button>
                 </div>

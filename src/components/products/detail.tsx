@@ -14,16 +14,21 @@ const SingleProduct = () => {
     const [product, setProduct] = useState<any | null>(null);
     const [favoriteProduct, setFavoriteProduct] = useState(false)
     const [itemToCartQuantity, setItemToCartQuantity] = useState(0)
+    console.log(product);
 
-    const incrementCartQuantity = () => {
-        console.log('clicked')
+    const handleCartQuantity = (type: string) => {
+        if (type === 'decrement' && itemToCartQuantity > 0) {
+            setItemToCartQuantity(itemToCartQuantity - 1)
+        }
+        if (type == 'increment') {
+            setItemToCartQuantity(itemToCartQuantity + 1)
+        }
     }
 
     useEffect(() => {
         const fetchProduct = async () => {
             try {
                 const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/api/v1/products/${id}`);
-
                 setProduct(response.data);
             } catch (error) {
                 console.error("Error fetching product:", error);
@@ -43,8 +48,13 @@ const SingleProduct = () => {
 
                 <div className='bg-white flex mx-auto w-10/12'>
                     <div className='mt-10 w-6/12'>
-                        <div className='border border-stone-200 flex justify-center h-[400px]'>
-                            {product?.images?.[0] || <img src="/src/assets/icons/foodbasket.svg" alt="Product Icon" className="w-40" />}
+                        <div className='flex justify-center h-[400px] mx-2'>
+                            {/* {product?.images?.[0]?.url || <img src="/src/assets/icons/foodbasket.svg" alt="Product Icon" className="w-40" />} */}
+                            {<img src={product?.images?.[0]?.url} alt={product?.images?.[0].alt_text} className="custom-product-image" />}
+                        </div>
+
+                        <div className='border-t border-stone-200'>
+
                         </div>
                     </div>
 
@@ -69,9 +79,9 @@ const SingleProduct = () => {
                                     </button>
 
                                     <div className='flex mx-4 w-full'>
-                                        <button className="border border-stone-500 mt-5 py-2 w-1/12">-</button>
+                                        <button className="border border-stone-500 mt-5 py-2 w-1/12" onClick={() => handleCartQuantity('decrement')}>-</button>
                                         <button className="bg-stone-200 mx-1 mt-5 p-3 text-stone-900 w-3/12">{itemToCartQuantity}</button>
-                                        <button className="border border-stone-500 mt-5 p-3 w-1/12">+</button>
+                                        <button className="border border-stone-500 mt-5 p-3 w-1/12" onClick={() => handleCartQuantity('increment')}>+</button>
                                     </div>
                                 </div>
                                 <button className="bg-[#212121] hover:bg-[#212121] mt-5 p-3 text-white w-6/12">Add to Cart</button>

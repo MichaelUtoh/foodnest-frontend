@@ -48,6 +48,13 @@ input[type="checkbox"]:checked::after {
   justify-content: space-between;
 }
 
+.custom-product-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto;
+}
+
 @media screen and (max-width: 860px) {
   .custom-header {
     align-items: flex-start;
