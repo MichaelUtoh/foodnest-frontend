@@ -1,3 +1,6 @@
+import ColorThief from 'colorthief';
+
+
 export const getGreeting = (): string => {
     const currentHour = new Date().getHours();
 

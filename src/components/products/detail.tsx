@@ -48,13 +48,14 @@ const SingleProduct = () => {
 
                 <div className='bg-white flex mx-auto w-10/12'>
                     <div className='mt-10 w-6/12'>
-                        <div className='flex justify-center h-[400px] mx-2'>
-                            {/* {product?.images?.[0]?.url || <img src="/src/assets/icons/foodbasket.svg" alt="Product Icon" className="w-40" />} */}
-                            {<img src={product?.images?.[0]?.url} alt={product?.images?.[0].alt_text} className="custom-product-image" />}
+                        <div className='flex justify-center h-[400px] m-2' id='custom-img-wrap'>
+                            {<img src={product?.images?.[0]?.url} alt={product?.images?.[0].alt_text} className="custom-product-image" id='custom-img' />}
                         </div>
 
-                        <div className='border-t border-stone-200'>
-
+                        <div className='border-t border-stone-200 flex h-20 justify-center overflow-scroll w-full'>
+                            {product?.images?.map((image) => (
+                                <img key={image.id} src={image.url} alt={image.alt_text} className="mx-1 object-contain" />
+                            ))}
                         </div>
                     </div>
 
