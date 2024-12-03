@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { REACT_APP_BACKEND_API_BASE_URL } from '../../../config'
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginForm: React.FC = () => {
     const inputForm = ['Email', 'Password']
@@ -67,7 +68,7 @@ const LoginForm: React.FC = () => {
                                 <p className='mb-1 text-left'>{label}</p>
 
                                 <input
-                                    className={'border border-gray-400 bg-transparent mr-2 outline-none p-2'}
+                                    className={'border border-gray-400 bg-transparent outline-none p-2'}
                                     type={label.toLowerCase() === "password" && !showPassword ? "password" : "text"}
                                     value={formValues[label] || ""}
                                     onChange={(e) => handleInputChange(label, e.target.value)}
@@ -80,7 +81,7 @@ const LoginForm: React.FC = () => {
 
                 <div className="flex justify-between">
                     <p className="mt-2 text-left text-sm text-gray-600">Forgot password?</p>
-                    <p className="mt-2 text-left text-sm text-gray-600" onClick={togglePasswordVisibility}>{showPassword ? "👁️" : "👁️‍🗨️"}</p>
+                    <p className="mt-2 text-left text-sm text-gray-600" onClick={togglePasswordVisibility}>{showPassword ? <FaEye /> : <FaEyeSlash />}</p>
                 </div>
 
                 <div>
