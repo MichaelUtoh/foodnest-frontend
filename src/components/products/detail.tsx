@@ -14,7 +14,7 @@ const SingleProduct = () => {
     const [product, setProduct] = useState<any | null>(null);
     const [favoriteProduct, setFavoriteProduct] = useState(false)
     const [itemToCartQuantity, setItemToCartQuantity] = useState(0)
-    console.log(product);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     const handleCartQuantity = (type: string) => {
         if (type === 'decrement' && itemToCartQuantity > 0) {
@@ -24,6 +24,12 @@ const SingleProduct = () => {
             setItemToCartQuantity(itemToCartQuantity + 1)
         }
     }
+
+    useEffect(() => {
+        if (product?.images?.[0]?.url) {
+            setSelectedImage(product.images[0].url);
+        }
+    }, [product]);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -48,13 +54,28 @@ const SingleProduct = () => {
 
                 <div className='bg-white flex mx-auto w-10/12'>
                     <div className='mt-10 w-6/12'>
+                        {/* Default Image */}
                         <div className='flex justify-center h-[400px] m-2' id='custom-img-wrap'>
-                            {<img src={product?.images?.[0]?.url} alt={product?.images?.[0].alt_text} className="custom-product-image" id='custom-img' />}
+                            {
+                                selectedImage ? 
+                                <img
+                                    src={selectedImage}
+                                    alt={product?.images?.[0].alt_text}
+                                    className="custom-product-image"
+                                    id='custom-img'
+                                /> : <img src="/src/assets/icons/foodbasket.svg" alt="Product Icon" className="w-40" />
+                            }
                         </div>
 
                         <div className='border-t border-stone-200 flex h-20 justify-center overflow-scroll w-full'>
                             {product?.images?.map((image) => (
-                                <img key={image.id} src={image.url} alt={image.alt_text} className="mx-1 object-contain" />
+                                <img
+                                    key={image.id}
+                                    src={image.url}
+                                    alt={image.alt_text}
+                                    className="mx-1 object-contain"
+                                    onClick={() => setSelectedImage(image.url)}
+                                />
                             ))}
                         </div>
                     </div>
