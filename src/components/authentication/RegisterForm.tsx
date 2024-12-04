@@ -1,13 +1,18 @@
 // components/RegisterForm.tsx
 import React, { useState } from "react";
-import { registerUser } from "../services/authService";
-import { RegisterRequest } from "../types/auth";
+import { REACT_APP_BACKEND_API_BASE_URL } from "../../../config";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm: React.FC = () => {
+    const navigate = useNavigate();
     const roles = ['Buyer', 'Seller', 'Transporter']
     const inputForm = ['First Name', 'Last Name', 'Phone', 'Email', 'Password']
-    const [selectedRole, setSelectedRole] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+    const [selectedRole, setSelectedRole] = useState<string | null>('Buyer');
     const [formValues, setFormValues] = useState<{ [key: string]: string | undefined }>({});
+    const roles_data = { Buyer: "retailer", Seller: "wholesaler", Transporter: "dispatch" }
 
     const handleInputChange = (label: string, value: string) => {
         setFormValues((prev) => ({
@@ -21,13 +26,49 @@ const RegisterForm: React.FC = () => {
         setFormValues((prev) => ({ ...prev, role }));
     };
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault()
         if (!selectedRole) {
             throw new Error('Please select a role')
         }
-        console.log("Form Submitted with Values:", formValues);
-        // Perform further actions like API calls
+
+        const payload = {
+            email: formValues['Email'],
+            password: formValues['Password'],
+            first_name: formValues['First Name'],
+            middle_name: '',
+            last_name: formValues['Last Name'],
+            address: '',
+            phone: formValues['Phone'],
+            is_active: true,
+            is_admin: false,
+            role: roles_data[selectedRole],
+        };
+
+        try {
+            const response = await axios.post(
+                `${REACT_APP_BACKEND_API_BASE_URL}/api/v1/auth/user/register`,
+                payload, { headers: { 'Content-Type': 'application/json' } }
+            )
+            console.log(response.data);
+            const { id, access_token, refresh_token, email } = response.data;
+            localStorage.setItem("id", id);
+            localStorage.setItem("token", access_token);
+            localStorage.setItem("user_id", id);
+            toast.success("Login Successful!");
+            setFormValues({});
+            navigate("/dashboard");
+        } catch (err: any) {
+            if (err.response?.data) {
+                console.error("Validation Errors:", err.response.data);
+                toast.error(err.response.data.message || "Validation Failed.");
+            } else {
+                console.error("Unknown Error:", err);
+                toast.error("An unexpected error occurred.");
+            }
+        } finally {
+            setLoading(false)
+        }
 
     };
 
@@ -49,11 +90,11 @@ const RegisterForm: React.FC = () => {
                 {roles.map((role) => (
                     <div
                         key={role}
-                        className={`border-b-2 flex justify-center p-1 my-3 cursor-pointer ${selectedRole === role ? "border-blue-500" : "border-gray-200"
+                        className={`border-b-2 flex justify-center p-1 my-3 cursor-pointer ${selectedRole === role ? "border-stone-700" : "border-stone-200"
                             }`}
                     >
                         <button
-                            className={`p-5 py-3 ${selectedRole === role ? "text-blue-600" : "text-gray-400"
+                            className={`p-5 py-3 ${selectedRole === role ? "text-stone-700" : "text-stone-400"
                                 } hover:text-gray-800`}
                             onClick={() => handleRoleClick(role)}
                         >
