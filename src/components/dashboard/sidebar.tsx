@@ -21,11 +21,6 @@ const Sidebar = () => {
             inactiveIcon: <RiHomeLine />,
         },
         {
-            name: "profile",
-            activeIcon: <HiUserCircle />,
-            inactiveIcon: <HiOutlineUserCircle />,
-        },
-        {
             name: "products",
             activeIcon: <BsCartDashFill />,
             inactiveIcon: <BsCartDash />,
@@ -54,7 +49,7 @@ const Sidebar = () => {
                 {menuItems.map((item) => (
                     <div key={item.name} onClick={() => handleItemClick(item.name)}>
                         <div
-                            className={locc === item.name ? 'bg-black my-3 p-4 text-[24px] text-white' : 'my-3 p-4 text-[24px]'}
+                            className={locc === item.name ? 'bg-[#D3F1DF] border-b-2 border-[#5A6C57] my-3 p-4 text-[24px] text-[#525B44]' : 'my-3 p-4 text-[24px]'}
                         >
                             {locc === item.name ? item.activeIcon : item.inactiveIcon}
                         </div>
