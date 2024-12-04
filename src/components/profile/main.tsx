@@ -5,6 +5,7 @@ import WelcomeBox from '../navigation/Welcome';
 import SearchBox from '../navigation/Search';
 
 const DashboardProfile = () => {
+    const settings_list = ['Profile', 'Security', 'Users', 'Notification', 'Upload']
 
     return (
         <div className="border-l border-gray-300 flex flex-col py-4 p-6 w-full">
@@ -17,7 +18,11 @@ const DashboardProfile = () => {
 
             <div className='flex mt-4'>
                 <div className='bg-red-100 flex flex-wrap w-2/12'>
-                    Hello Profile
+                    {settings_list.map((idx, obj) => (
+                        <div key={idx}>
+                            <p>{obj}</p>
+                        </div>
+                    ))}
 
 
                 </div>
