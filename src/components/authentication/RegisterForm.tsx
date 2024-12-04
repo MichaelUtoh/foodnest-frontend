@@ -49,8 +49,7 @@ const RegisterForm: React.FC = () => {
             const response = await axios.post(
                 `${REACT_APP_BACKEND_API_BASE_URL}/api/v1/auth/user/register`,
                 payload, { headers: { 'Content-Type': 'application/json' } }
-            )
-            console.log(response.data);
+            );
             const { id, access_token, refresh_token, email } = response.data;
             localStorage.setItem("id", id);
             localStorage.setItem("token", access_token);
