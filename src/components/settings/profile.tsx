@@ -25,8 +25,6 @@ const Profile = () => {
                     },
                 });
                 setUser(response.data);
-                console.log(response.data);
-
             } catch (error) {
                 console.error("Error fetching user details:", error.response.data);
                 if (error.response?.status === 401) {
