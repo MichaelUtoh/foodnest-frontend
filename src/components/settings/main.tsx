@@ -39,7 +39,7 @@ const DashboardSettings = () => {
             <div className='flex mt-4'>
                 <div className='flex flex-col flex-wrap pr-3 text-left w-2/12'>
                     {settings_list.map((obj) => (
-                        <div key={obj} className={`${selectedField === obj ? 'bg-[#D3F1DF] border-b-2 border-[#5A6C57] text-[#525B44]' : "bg-gray-50"} mb-4 p-4`} onClick={() => setSelectedField(obj)}>
+                        <div key={obj} className={`${selectedField === obj ? 'bg-[#D3F1DF] border-b-2 border-[#5A6C57] text-[#525B44]' : "bg-gray-50 border-b-2 border-gray-300"} mb-4 p-4`} onClick={() => setSelectedField(obj)}>
                             <p>{obj}</p>
                         </div>
                     ))}

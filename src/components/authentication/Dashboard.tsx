@@ -5,12 +5,8 @@ import Sidebar from "../dashboard/sidebar";
 import axios from "axios";
 import { REACT_APP_BACKEND_API_BASE_URL } from '../../../config'
 import NavBar from "../navigation/NavBar";
-import DashboardProducts from "../products/main";
-import Loading from "../dashboard/loading";
 import useSidebarStore from "../../../store/sidebarStore";
 import DashboardMain from "../dashboard/main";
-import DashboardProfile from "../profile/main";
-import DashboardSettings from "../settings/Main";
 import useUserStore from "../../../store/userStore";
 
 const Dashboard: React.FC = () => {

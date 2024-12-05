@@ -1,4 +1,3 @@
-// components/RegisterForm.tsx
 import React, { useState } from "react";
 
 const VerifyForm: React.FC = () => {

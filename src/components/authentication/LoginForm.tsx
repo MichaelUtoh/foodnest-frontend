@@ -1,4 +1,3 @@
-// components/RegisterForm.tsx
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -85,7 +84,7 @@ const LoginForm: React.FC = () => {
                 </div>
 
                 <div>
-                    <button className="bg-[#212121] hover:bg-[#212121] mt-5 p-3 text-white w-full                                                                                                                                                                                                    " disabled={loading} type="submit">
+                    <button className="bg-[#525B44] hover:bg-[#5A6C57] mt-5 p-3 text-white w-full                                                                                                                                                                                                    " disabled={loading} type="submit">
                         {loading ? "Submitting..." : "Submit"}
                     </button>
                 </div>

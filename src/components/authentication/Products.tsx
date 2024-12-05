@@ -9,8 +9,6 @@ import DashboardProducts from "../products/main";
 import Loading from "../dashboard/loading";
 import useSidebarStore from "../../../store/sidebarStore";
 import DashboardMain from "../dashboard/main";
-import DashboardProfile from "../profile/main";
-import DashboardSettings from "../settings/Main";
 import useUserStore from "../../../store/userStore";
 import Products from "../products/main";
 
