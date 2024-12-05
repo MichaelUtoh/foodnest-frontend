@@ -45,7 +45,7 @@ const DashboardSettings = () => {
                     ))}
                 </div>
 
-                <div className='bg-blue-100 flex h-[500px] w-10/12'>
+                <div className='flex w-10/12'>
                     {renderComponent()}
                 </div>
             </div>

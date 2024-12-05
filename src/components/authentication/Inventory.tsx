@@ -6,13 +6,14 @@ import axios from "axios";
 import { REACT_APP_BACKEND_API_BASE_URL } from '../../../config'
 import NavBar from "../navigation/NavBar";
 import useSidebarStore from "../../../store/sidebarStore";
-import DashboardMain from "../dashboard/main";
 import useUserStore from "../../../store/userStore";
+import InventoryComponent from "../inventory/main";
 
-const Dashboard: React.FC = () => {
+const Inventory: React.FC = () => {
     const navigate = useNavigate();
     const authToken = localStorage.getItem("token");
     const userId = localStorage.getItem("id");
+    const { selected } = useSidebarStore()
     const setUserDetails = useUserStore((state) => state.setUserDetails);
 
     useEffect(() => {
@@ -50,11 +51,11 @@ const Dashboard: React.FC = () => {
             <NavBar />
             <div className="flex">
                 <Sidebar />
-                {true && <DashboardMain />}
+                {true && <InventoryComponent />}
 
             </div>
         </div >
     );
 };
 
-export default Dashboard;
+export default Inventory;
