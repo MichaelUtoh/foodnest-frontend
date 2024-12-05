@@ -1,4 +1,3 @@
-// types/auth.ts
 export interface RegisterRequest {
     username: string;
     email: string;
@@ -9,7 +8,7 @@ export interface RegisterResponse {
     id: number;
     username: string;
     email: string;
-    token: string; // Assuming the backend returns a token
+    token: string;
 }
 
 export type UserRole = {

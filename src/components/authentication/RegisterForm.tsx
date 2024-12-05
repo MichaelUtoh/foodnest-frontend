@@ -1,4 +1,3 @@
-// components/RegisterForm.tsx
 import React, { useState } from "react";
 import { REACT_APP_BACKEND_API_BASE_URL } from "../../../config";
 import axios from "axios";
@@ -124,7 +123,7 @@ const RegisterForm: React.FC = () => {
                 }
                 <p className="mt-2 text-left text-sm text-gray-600">Forgot password?</p>
                 <div>
-                    <button className="bg-[#212121] hover:bg-[#212121] mt-5 p-3 text-white w-full">Submit</button>
+                    <button className="bg-[#525B44] hover:bg-[#5A6C57] mt-5 p-3 text-white w-full">Submit</button>
                 </div>
 
             </form>

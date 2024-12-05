@@ -5,14 +5,9 @@ import Sidebar from "../dashboard/sidebar";
 import axios from "axios";
 import { REACT_APP_BACKEND_API_BASE_URL } from '../../../config'
 import NavBar from "../navigation/NavBar";
-import DashboardProducts from "../products/main";
-import Loading from "../dashboard/loading";
 import useSidebarStore from "../../../store/sidebarStore";
-import DashboardMain from "../dashboard/main";
-import DashboardProfile from "../profile/main";
-import DashboardSettings from "../settings/Main";
 import useUserStore from "../../../store/userStore";
-import Products from "../products/main";
+import DashboardSettings from "../settings/main";
 
 const Settings: React.FC = () => {
     const navigate = useNavigate();
@@ -50,21 +45,6 @@ const Settings: React.FC = () => {
         navigate("/login");
         return null;
     }
-
-    // const renderComponent = () => {
-    //     switch (selected) {
-    //         case "Home":
-    //             return <DashboardMain />;
-    //         case "Profile":
-    //             return <DashboardProfile />;
-    //         case "Settings":
-    //             return <DashboardSettings />;
-    //         case "Market":
-    //             return <DashboardProducts />;
-    //         default:
-    //             return <DashboardMain />;
-    //     }
-    // };
 
     return (
         <div>
