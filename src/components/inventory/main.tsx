@@ -12,8 +12,8 @@ const InventoryComponent = () => {
                 <SearchBox />
             </div>
 
-            <div className='bg-green-50 flex mt-4'>
-                <div className='flex w-full'>
+            <div className='bg-white flex mt-4 h-full'>
+                <div className='flex items-center justify-center w-full'>
                     <p>Inventory Page</p>
                 </div>
             </div>

@@ -24,7 +24,7 @@ const LoginForm: React.FC = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post(`${REACT_APP_BACKEND_API_BASE_URL}/api/v1/auth/user/login`, {
+            const response = await axios.post(`${REACT_APP_BACKEND_API_BASE_URL}/auth/users/login`, {
                 email: formValues["Email"],
                 password: formValues["Password"],
             }, { headers: { 'Content-Type': 'application/json' } });

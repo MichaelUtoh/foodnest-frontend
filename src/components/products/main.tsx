@@ -29,7 +29,7 @@ const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/api/v1/products`);
+                const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/products`);
                 setProducts(response.data?.items || [])
             } catch (error) {
                 console.error("Error fetching user details:", error);

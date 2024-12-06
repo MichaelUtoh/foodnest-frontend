@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { FaUser } from 'react-icons/fa6';
+import { FaPen, FaUser } from 'react-icons/fa6';
 import { REACT_APP_BACKEND_API_BASE_URL } from '../../../config';
 import { useNavigate } from 'react-router-dom';
 import { UserType } from '../types/auth';
@@ -19,7 +19,7 @@ const Profile = () => {
 
         const fetchUserDetails = async () => {
             try {
-                const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/api/v1/auth/user/${userId}/`, {
+                const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/auth/users/${userId}/`, {
                     headers: {
                         Authorization: `Bearer ${authToken}`,
                     },
@@ -57,12 +57,14 @@ const Profile = () => {
             </div>
 
             <div className='flex flex-col p-4 py-6 text-left'>
-                <div className='flex items-center justify-between'>
+                <div className='border-b border-gray-300 flex items-center justify-between py-2'>
                     <div>
                         <h1 className='text-2xl'>Personal Information</h1>
                     </div>
-                    <div>
-                        <button className='border border-gray-400 hover:bg-[#5A6C57] hover:border-[#5A6C57] hover:text-white p-2 px-4'>Edit</button>
+                    <div className='mx-2'>
+                        <button className='border border-gray-400 hover:bg-[#5A6C57] hover:border-[#5A6C57] hover:text-white p-2 px-4'>
+                            <FaPen />
+                        </button>
                     </div>
                 </div>
 
@@ -70,27 +72,27 @@ const Profile = () => {
                     <div className='flex gap-10 mb-2 py-4'>
                         <div className='flex flex-col'>
                             <label htmlFor="First Name" className='font-[500] text-xs text-[#85A98F] uppercase'>First Name</label>
-                            <p className='text-xl'>{user?.first_name || '----- -----'}</p>
+                            <p className='text-[#335] text-xl'>{user?.first_name || '----- -----'}</p>
                         </div>
                         <div className='flex flex-col'>
                             <label htmlFor="First Name" className='font-[500] text-xs text-[#85A98F] uppercase'>Last Name</label>
-                            <p className='text-xl'>{user?.last_name || '----- -----'}</p>
+                            <p className='text-[#335] text-xl'>{user?.last_name || '----- -----'}</p>
                         </div>
                     </div>
                     <div className='flex gap-10 mb-2 py-4'>
                         <div className='flex flex-col'>
                             <label htmlFor="Email" className='font-[500] text-xs text-[#85A98F] uppercase'>Email</label>
-                            <p className='text-xl'>{user?.email || '----- ----- ---- ----'}</p>
+                            <p className='text-[#335] text-xl'>{user?.email || '----- ----- ---- ----'}</p>
                         </div>
                     </div>
                     <div className='flex gap-[3rem] mb-2 py-4'>
                         <div className='flex flex-col'>
                             <label htmlFor="Phone" className='font-[500] text-xs text-[#85A98F] uppercase'>Phone</label>
-                            <p className='text-xl'>{user?.phone || '----- -----'}</p>
+                            <p className='text-[#335] text-xl'>{user?.phone || '----- -----'}</p>
                         </div>
                         <div className='flex flex-col'>
                             <label htmlFor="Address" className='font-[500] text-xs text-[#85A98F] uppercase'>Address</label>
-                            <p className='text-xl'>{user?.address || '----- -----'}</p>
+                            <p className='text-[#335] text-xl'>{user?.address || '----- -----'}</p>
                         </div>
                     </div>
                 </div>
