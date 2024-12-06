@@ -34,7 +34,7 @@ const SingleProduct = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/api/v1/products/${id}`);
+                const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/products/${id}`);
                 setProduct(response.data);
             } catch (error) {
                 console.error("Error fetching product:", error);
@@ -50,20 +50,20 @@ const SingleProduct = () => {
     return (
         <div>
             <NavBar />
-            <div className="flex">
+            <div className="flex h-[92vh]">
 
                 <div className='bg-white flex mx-auto w-10/12'>
                     <div className='mt-10 w-6/12'>
                         {/* Default Image */}
                         <div className='flex justify-center h-[400px] m-2' id='custom-img-wrap'>
                             {
-                                selectedImage ? 
-                                <img
-                                    src={selectedImage}
-                                    alt={product?.images?.[0].alt_text}
-                                    className="custom-product-image"
-                                    id='custom-img'
-                                /> : <img src="/src/assets/icons/foodbasket.svg" alt="Product Icon" className="w-40" />
+                                selectedImage ?
+                                    <img
+                                        src={selectedImage}
+                                        alt={product?.images?.[0].alt_text}
+                                        className="custom-product-image"
+                                        id='custom-img'
+                                    /> : <img src="/src/assets/icons/foodbasket.svg" alt="Product Icon" className="w-40" />
                             }
                         </div>
 
@@ -80,7 +80,7 @@ const SingleProduct = () => {
                         </div>
                     </div>
 
-                    <div className='beast w-6/12'>
+                    <div className='w-6/12'>
                         <div className='flex flex-col items-start mt-10 p-4'>
                             <div className='border-b border-stone-200 py-4 text-left w-full'>
                                 <p className='font-thin text-2xl'>{product.name}</p>

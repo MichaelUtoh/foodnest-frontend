@@ -3,12 +3,11 @@
 
 body {
   background-color: #f4f4f4;
-  font-family: 'Parkinsans', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   margin: 0 auto;
   text-align: center;
   height: 100vh;
   user-select: none;
-  /* max-width: 1280px; */
 }
 
 input[type="checkbox"] {
@@ -59,7 +58,6 @@ input[type="checkbox"]:checked::after {
   background-size: cover;
   width: auto;
 }
-
 
 /* Media Query */
 @media screen and (max-width: 860px) {

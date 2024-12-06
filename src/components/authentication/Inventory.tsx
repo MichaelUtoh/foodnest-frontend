@@ -7,9 +7,9 @@ import { REACT_APP_BACKEND_API_BASE_URL } from '../../../config'
 import NavBar from "../navigation/NavBar";
 import useSidebarStore from "../../../store/sidebarStore";
 import useUserStore from "../../../store/userStore";
-import DashboardSettings from "../settings/main";
+import InventoryComponent from "../inventory/main";
 
-const Settings: React.FC = () => {
+const Inventory: React.FC = () => {
     const navigate = useNavigate();
     const authToken = localStorage.getItem("token");
     const userId = localStorage.getItem("id");
@@ -47,15 +47,15 @@ const Settings: React.FC = () => {
     }
 
     return (
-        <div>
+        <div className="flex flex-col">
             <NavBar />
             <div className="flex h-[92vh]">
                 <Sidebar />
-                {true && <DashboardSettings />}
+                {true && <InventoryComponent />}
 
             </div>
         </div >
     );
 };
 
-export default Settings;
+export default Inventory;

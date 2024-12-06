@@ -13,7 +13,6 @@ const Dashboard: React.FC = () => {
     const navigate = useNavigate();
     const authToken = localStorage.getItem("token");
     const userId = localStorage.getItem("id");
-    const { selected } = useSidebarStore()
     const setUserDetails = useUserStore((state) => state.setUserDetails);
 
     useEffect(() => {
@@ -24,7 +23,7 @@ const Dashboard: React.FC = () => {
 
         const fetchUserDetails = async () => {
             try {
-                const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/api/v1/auth/user/${userId}/`, {
+                const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/auth/users/${userId}/`, {
                     headers: {
                         Authorization: `Bearer ${authToken}`,
                     },
@@ -49,7 +48,7 @@ const Dashboard: React.FC = () => {
     return (
         <div>
             <NavBar />
-            <div className="flex">
+            <div className="flex h-[92vh]">
                 <Sidebar />
                 {true && <DashboardMain />}
 

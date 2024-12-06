@@ -27,7 +27,7 @@ const Product: React.FC = () => {
 
         const fetchUserDetails = async () => {
             try {
-                const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/api/v1/auth/user/${userId}/`, {
+                const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/auth/users/${userId}/`, {
                     headers: {
                         Authorization: `Bearer ${authToken}`,
                     },
@@ -52,7 +52,7 @@ const Product: React.FC = () => {
     return (
         <div>
             <NavBar />
-            <div className="flex">
+            <div className="flex h-[92vh]">
                 <Sidebar />
                 {true && <Products />}
 
