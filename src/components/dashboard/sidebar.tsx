@@ -49,7 +49,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className='beast flex flex-col items-center justify-between pt-10 p-2 w-[80px]'>
+        <div className='beast flex flex-col items-center justify-between pt-2 p-2 w-[80px]'>
             <div>
                 {menuItems.map((item) => (
                     <div key={item.name} onClick={() => handleItemClick(item.name)}>
