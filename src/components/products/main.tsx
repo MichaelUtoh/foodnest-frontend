@@ -74,7 +74,7 @@ const Products = () => {
                         ))}
                     </div>
 
-                    <div className='h-56 flex flex-col w-full'>
+                    <div className='h-56 flex flex-col my-2 w-full'>
                         <div className='border-b border-gray-300 flex items-center justify-between m-2 pb-3'>
                             <p className='text-sm uppercase'>Status</p>
                             {/* <p><IoIosArrowDown className='mx-4' /></p> */}
