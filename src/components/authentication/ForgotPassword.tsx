@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const VerifyForm: React.FC = () => {
-    const inputForm = ['Verification Code']
+const ForgotPassword: React.FC = () => {
+    const inputForm = ['Email']
     const [formValues, setFormValues] = useState<{ [key: string]: string | undefined }>({});
 
     const handleInputChange = (label: string, value: string) => {
@@ -27,7 +27,7 @@ const VerifyForm: React.FC = () => {
                 </div>
                 <div className="flex flex-col items-center justify-center mx-auto h-screen w-4/12">
                     <div>
-                        <p className='text-[2rem]'>Verify Your Account</p>
+                        <p className='text-[2rem]'>Request a Password Change</p>
                     </div>
                     <hr className="border-t-2 border-red-600 bg-red-400" />
                     &nbsp;
@@ -61,4 +61,4 @@ const VerifyForm: React.FC = () => {
     );
 };
 
-export default VerifyForm;
+export default ForgotPassword;

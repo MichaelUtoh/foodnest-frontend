@@ -5,6 +5,7 @@ import axios from 'axios';
 import useSearchStore from '../../../store/searchStore';
 import { RiDeleteBin3Line } from 'react-icons/ri';
 import { BsPencil } from 'react-icons/bs';
+import { TiDelete } from 'react-icons/ti';
 
 const UserManagement = () => {
     const [users, setUsers] = useState<UserType[]>([]);
@@ -120,21 +121,21 @@ const UserManagement = () => {
                                 {/* Details */}
                                 <div className='flex flex-grow items-center'>
                                     <div className='flex flex-col text-left w-5/12'>
-                                        <p className="font-thin text-lg">
+                                        <p className="font-[300] text-md">
                                             {user.first_name} {user.last_name}
                                         </p>
                                     </div>
 
                                     <div className='flex flex-col text-left w-4/12'>
-                                        <p className="text-lg text-gray-500">{user.email}</p>
+                                        <p className="font-[300] text-md">{user.email}</p>
                                     </div>
 
                                     <div className='w-4/12'>
-                                        <p className="text-lg text-gray-500">{user.phone}</p>
+                                        <p className="font-[300] text-md">{user.phone}</p>
                                     </div>
 
                                     <div className='w-4/12'>
-                                        <p className="text-lg text-gray-500 capitalize">{user.role}</p>
+                                        <p className="font-[300] text-md capitalize">{user.role}</p>
                                     </div>
                                 </div>
 
@@ -155,63 +156,101 @@ const UserManagement = () => {
                     {isModalOpen && selectedUser && (
                         <div className="absolute top-0 left-0 w-full h-full bg-gray-800 bg-opacity-70 flex items-center justify-center">
                             <div className="bg-white flex flex-col h-[700px] items-start p-6 rounded shadow-lg w-2/5">
-                                <div>
+                                <div className='flex justify-between w-full'>
                                     <h2 className="text-2xl font-[400] mb-4">Edit User Information</h2>
+                                    <p onClick={handleCloseModal}><TiDelete color='red' size={35} /></p>
                                 </div>
                                 <form className='w-full'>
-                                    <div className="mb-4 text-left">
-                                        <label>Email</label>
+                                    <div className="my-4 text-left">
+                                        <label className='text-xs uppercase'>Email</label>
                                         <input
                                             type="text"
                                             value={selectedUser.email}
                                             readOnly
-                                            className="border p-2 rounded w-full bg-gray-100"
+                                            className="border outline-[#5A6C57] p-2 w-full bg-gray-100"
                                         />
                                     </div>
-                                    <div className="mb-4 text-left">
-                                        <label>First Name</label>
-                                        <input
-                                            type="text"
-                                            value={selectedUser.first_name}
-                                            onChange={(e) =>
-                                                setSelectedUser({ ...selectedUser, first_name: e.target.value })
-                                            }
-                                            className="border p-2 rounded w-full"
-                                        />
+                                    <div className='flex justify-between gap-2'>
+
+                                        <div className="flex-grow mb-4 text-left">
+                                            <label className='text-xs uppercase'>First Name</label>
+                                            <input
+                                                type="text"
+                                                value={selectedUser.first_name}
+                                                onChange={(e) =>
+                                                    setSelectedUser({ ...selectedUser, first_name: e.target.value })
+                                                }
+                                                className="border mt-1 p-2 outline-[#5A6C57] w-full"
+                                            />
+                                        </div>
+                                        <div className="flex-grow mb-4 text-left">
+                                            <label className='text-xs uppercase'>Middle Name</label>
+                                            <input
+                                                type="text"
+                                                value={selectedUser.middle_name}
+                                                onChange={(e) =>
+                                                    setSelectedUser({ ...selectedUser, middle_name: e.target.value })
+                                                }
+                                                className="border mt-1 p-2 outline-[#5A6C57] w-full"
+                                            />
+                                        </div>
+                                        <div className="flex-grow mb-4 text-left">
+                                            <label className='text-xs uppercase'>Last Name</label>
+                                            <input
+                                                type="text"
+                                                value={selectedUser.last_name}
+                                                onChange={(e) =>
+                                                    setSelectedUser({ ...selectedUser, last_name: e.target.value })
+                                                }
+                                                className="border mt-1 p-2 outline-[#5A6C57] w-full"
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="mb-4 text-left">
-                                        <label>Last Name</label>
-                                        <input
-                                            type="text"
-                                            value={selectedUser.last_name}
-                                            onChange={(e) =>
-                                                setSelectedUser({ ...selectedUser, last_name: e.target.value })
-                                            }
-                                            className="border p-2 rounded w-full"
-                                        />
-                                    </div>
-                                    <div className="mb-4 text-left">
-                                        <label>Phone</label>
-                                        <input
-                                            type="text"
-                                            value={selectedUser.phone}
-                                            onChange={(e) =>
-                                                setSelectedUser({ ...selectedUser, phone: e.target.value })
-                                            }
-                                            className="border p-2 rounded w-full"
-                                        />
+
+                                    <div className='flex md:flex-col'>
+                                        <div className="mb-4 text-left">
+                                            <label className='text-xs uppercase'>Address</label>
+                                            <input
+                                                type="text"
+                                                value={selectedUser.address}
+                                                onChange={(e) =>
+                                                    setSelectedUser({ ...selectedUser, address: e.target.value })
+                                                }
+                                                className="border outline-[#5A6C57] p-2 w-full"
+                                            />
+                                        </div>
+                                        <div className="mb-4 text-left">
+                                            <label className='text-xs uppercase'>Phone</label>
+                                            <input
+                                                type="text"
+                                                value={selectedUser.phone}
+                                                onChange={(e) =>
+                                                    setSelectedUser({ ...selectedUser, phone: e.target.value })
+                                                }
+                                                className="border outline-[#5A6C57] p-2 w-full"
+                                            />
+                                        </div>
+                                        <div className="mb-4 text-left">
+                                            <label className='text-xs uppercase'>Role</label>
+                                            <select
+                                                value={selectedUser.role}
+                                                onChange={(e) =>
+                                                    setSelectedUser({ ...selectedUser, role: e.target.value })
+                                                }
+                                                className="border outline-[#5A6C57] p-2 w-full bg-white"
+                                            >
+                                                <option value="buyer">Buyer</option>
+                                                <option value="wholesaler">Seller</option>
+                                                <option value="dispatch">Dispatch</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </form>
-                                <div className="flex justify-end space-x-2">
-                                    <button
-                                        onClick={handleCloseModal}
-                                        className="bg-gray-500 text-white px-4 py-2 rounded"
-                                    >
-                                        Cancel
-                                    </button>
+                                <div className="mt-4 w-full">
+
                                     <button
                                         onClick={handleSaveChanges}
-                                        className="bg-blue-500 text-white px-4 py-2 rounded"
+                                        className="bg-[#525B44] hover:bg-[#5A6C57] text-white p-3 w-full"
                                     >
                                         Save
                                     </button>
@@ -220,8 +259,6 @@ const UserManagement = () => {
                         </div>
                     )}
                 </div>
-
-
             }
         </>
     )

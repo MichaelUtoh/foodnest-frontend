@@ -52,47 +52,67 @@ const LoginForm: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center mx-auto h-screen w-4/12">
-            <div>
-                <p className='text-[2rem]'>Login</p>
-            </div>
-            <hr className="border-t-2 border-red-600 bg-red-400" />
-            &nbsp;
+        <>
+            <div className="flex overflow-hidden">
+                <div className="bg-green-200 bg-cover h-screen w-6/12">
+                    <img
+                        src="https://images.pexels.com/photos/6152391/pexels-photo-6152391.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        alt="grocery@foodnest"
+                    />
+                </div>
 
-            <form onSubmit={handleSubmit} className="w-11/12">
-                {
-                    inputForm.map((label) => (
-                        <div className="" key={label}>
-                            <div className='flex flex-col mt-5 w-full'>
-                                <p className='mb-1 text-left'>{label}</p>
+                <div className="flex flex-col items-center justify-center mx-auto h-screen w-4/12">
+                    <div>
+                        <p className='text-[2rem]'>Login</p>
+                    </div>
+                    <hr className="border-t-2 border-red-600 bg-red-400" />
+                    &nbsp;
 
-                                <input
-                                    className={'border border-gray-400 bg-transparent outline-none p-2'}
-                                    type={label.toLowerCase() === "password" && !showPassword ? "password" : "text"}
-                                    value={formValues[label] || ""}
-                                    onChange={(e) => handleInputChange(label, e.target.value)}
-                                    placeholder={label}
-                                />
-                            </div>
+                    <form onSubmit={handleSubmit} className="w-11/12">
+                        {
+                            inputForm.map((label) => (
+                                <div className="" key={label}>
+                                    <div className='flex flex-col mt-5 w-full'>
+                                        <p className='mb-1 text-left text-xs uppercase'>{label}</p>
+
+                                        <div className="border border-gray-400 flex items-center justify-between">
+
+                                            <input
+                                                className={label.toLowerCase() === "password" ? ` bg-transparent outline-none p-2 w-10/12` : ` bg-transparent outline-none p-2 w-full`}
+                                                type={label.toLowerCase() === "password" && !showPassword ? "password" : "text"}
+                                                value={formValues[label] || ""}
+                                                onChange={(e) => handleInputChange(label, e.target.value)}
+                                                placeholder={label}
+                                            />
+
+                                            {label.toLowerCase() === "password" && <p className="mx-4 text-left text-sm text-gray-600" onClick={togglePasswordVisibility}>{showPassword ? <FaEye size={20} /> : <FaEyeSlash size={20} />}</p>}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+
+                        <div className="flex justify-between w-full">
+                            <p className="cursor-pointer hover:text-[#91AC8F] mt-2 text-xs text-gray-600" onClick={() => navigate('/forgot-password')}>Forgot password?</p>
+                            <p className="cursor-pointer hover:text-[#4B5945] mt-2 text-xs text-gray-600" onClick={() => navigate('/register')}>Create new Account</p>
                         </div>
-                    ))
-                }
 
-                <div className="flex justify-between">
-                    <p className="mt-2 text-left text-sm text-gray-600">Forgot password?</p>
-                    <p className="mt-2 text-left text-sm text-gray-600" onClick={togglePasswordVisibility}>{showPassword ? <FaEye /> : <FaEyeSlash />}</p>
+                        <div>
+                            <button
+                                className="bg-[#525B44] hover:bg-[#5A6C57] mt-5 p-3 text-white w-full"
+                                disabled={loading}
+                                type="submit"
+                            >
+                                {loading ? "Submitting..." : "Submit"}
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <Toaster position="top-right" reverseOrder={false} />
                 </div>
-
-                <div>
-                    <button className="bg-[#525B44] hover:bg-[#5A6C57] mt-5 p-3 text-white w-full                                                                                                                                                                                                    " disabled={loading} type="submit">
-                        {loading ? "Submitting..." : "Submit"}
-                    </button>
-                </div>
-
-            </form>
-
-            <Toaster position="top-right" reverseOrder={false} />
-        </div>
+            </div>
+        </>
     );
 };
 
