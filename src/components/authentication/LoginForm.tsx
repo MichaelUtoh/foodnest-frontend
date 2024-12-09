@@ -93,12 +93,16 @@ const LoginForm: React.FC = () => {
                         }
 
                         <div className="flex justify-between w-full">
-                            <p className="cursor-pointer hover:text-[#91AC8F] mt-2 text-xs text-gray-600">Forgot password?</p>
+                            <p className="cursor-pointer hover:text-[#91AC8F] mt-2 text-xs text-gray-600" onClick={() => navigate('/forgot-password')}>Forgot password?</p>
                             <p className="cursor-pointer hover:text-[#4B5945] mt-2 text-xs text-gray-600" onClick={() => navigate('/register')}>Create new Account</p>
                         </div>
 
                         <div>
-                            <button className="bg-[#525B44] hover:bg-[#5A6C57] mt-5 p-3 text-white w-full                                                                                                                                                                                                    " disabled={loading} type="submit">
+                            <button
+                                className="bg-[#525B44] hover:bg-[#5A6C57] mt-5 p-3 text-white w-full"
+                                disabled={loading}
+                                type="submit"
+                            >
                                 {loading ? "Submitting..." : "Submit"}
                             </button>
                         </div>

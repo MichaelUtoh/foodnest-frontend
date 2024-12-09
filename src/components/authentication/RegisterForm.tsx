@@ -131,7 +131,7 @@ const RegisterForm: React.FC = () => {
                             ))
                         }
                         <div className="flex justify-between w-full">
-                            <p className="cursor-pointer hover:text-[#91AC8F] mt-2 text-xs text-gray-600">Forgot password?</p>
+                            <p className="cursor-pointer hover:text-[#91AC8F] mt-2 text-xs text-gray-600" onClick={() => navigate('/forgot-password')}>Forgot password?</p>
                             <p className="cursor-pointer hover:text-[#4B5945] mt-2 text-xs text-gray-600" onClick={() => navigate('/login')}>Login to my Account</p>
                         </div>
                         <div className="mt-6">

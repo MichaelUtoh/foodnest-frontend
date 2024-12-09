@@ -9,15 +9,17 @@ import Product from "./components/authentication/Products";
 import Settings from "./components/authentication/Settings";
 import SingleProduct from "./components/products/detail";
 import Inventory from "./components/authentication/Inventory";
+import ForgotPassword from "./components/authentication/ForgotPassword";
 
 function App() {
 
   return (
     <>
       <Routes>
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
-        <Route path="/register" element={<VerifyForm />} />
+        <Route path="/verify" element={<VerifyForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/products" element={<Product />} />
         <Route path="/inventory" element={<Inventory />} />
