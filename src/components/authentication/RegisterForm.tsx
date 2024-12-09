@@ -71,63 +71,77 @@ const RegisterForm: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center mx-auto h-screen w-4/12">
-            <div>
-
-                <p className='text-[2rem]'>Create Account</p>
-                <p className='my-4 text-gray-600 text-[1rem] text-center'>
-                    To manage or showcase your products, connect with
-                    buyers & sellers all over the globe, create a Foodnest
-                    account to continue
-                </p>
-
-
-            </div>
-            <div className="flex mx-auto">
-
-                {roles.map((role) => (
-                    <div
-                        key={role}
-                        className={`border-b-2 flex justify-center p-1 my-3 cursor-pointer ${selectedRole === role ? "border-stone-700" : "border-stone-200"
-                            }`}
-                    >
-                        <button
-                            className={`p-5 py-3 ${selectedRole === role ? "text-stone-700" : "text-stone-400"
-                                } hover:text-gray-800`}
-                            onClick={() => handleRoleClick(role)}
-                        >
-                            {role}
-                        </button>
-                    </div>
-                ))}
-
-            </div>
-            &nbsp;
-
-            <form onSubmit={handleSubmit} className="w-11/12">
-                {
-                    inputForm.map((label) => (
-                        <div key={label}>
-                            <div className='flex flex-col mt-5 w-full'>
-                                <p className='mb-1 text-left'>{label}</p>
-                                <input
-                                    className={'border border-gray-400 bg-transparent mr-2 outline-none p-2'}
-                                    type={label.toLowerCase() === "password" ? "password" : "text"}
-                                    value={formValues[label] || ""}
-                                    onChange={(e) => handleInputChange(label, e.target.value)}
-                                    placeholder={label}
-                                />
-                            </div>
-                        </div>
-                    ))
-                }
-                <p className="mt-2 text-left text-sm text-gray-600">Forgot password?</p>
-                <div>
-                    <button className="bg-[#525B44] hover:bg-[#5A6C57] mt-5 p-3 text-white w-full">Submit</button>
+        <>
+            <div className="flex overflow-hidden">
+                <div className="bg-green-200 bg-cover h-screen w-6/12">
+                    <img
+                        src="https://images.pexels.com/photos/6152391/pexels-photo-6152391.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        alt="grocery@foodnest"
+                    />
                 </div>
 
-            </form>
-        </div>
+                <div className="flex flex-col items-center justify-center mx-auto h-screen w-4/12">
+                    <div>
+
+                        <p className='text-[2rem]'>Create Account</p>
+                        <p className='my-4 text-gray-600 text-[1rem] text-center'>
+                            To manage or showcase your products, connect with
+                            buyers & sellers across the Country, create a Foodnest
+                            account to continue
+                        </p>
+
+
+                    </div>
+                    <div className="flex mx-auto">
+
+                        {roles.map((role) => (
+                            <div
+                                key={role}
+                                className={`border-b-2 flex justify-center p-1 my-3 cursor-pointer ${selectedRole === role ? "border-stone-700" : "border-stone-200"
+                                    }`}
+                            >
+                                <button
+                                    className={`p-5 py-3 ${selectedRole === role ? "text-stone-700" : "text-stone-400"
+                                        } hover:text-gray-800`}
+                                    onClick={() => handleRoleClick(role)}
+                                >
+                                    {role}
+                                </button>
+                            </div>
+                        ))}
+
+                    </div>
+                    &nbsp;
+
+                    <form onSubmit={handleSubmit} className="w-11/12">
+                        {
+                            inputForm.map((label) => (
+                                <div key={label}>
+                                    <div className='flex flex-col mt-5 w-full'>
+                                        <p className='mb-1 text-left text-xs uppercase'>{label}</p>
+                                        <input
+                                            className={'border border-gray-400 bg-transparent mr-2 outline-none p-2 text-[#4B5945]'}
+                                            type={label.toLowerCase() === "password" ? "password" : "text"}
+                                            value={formValues[label] || ""}
+                                            onChange={(e) => handleInputChange(label, e.target.value)}
+                                            placeholder={label}
+                                        />
+                                    </div>
+                                </div>
+                            ))
+                        }
+                        <div className="flex justify-between w-full">
+                            <p className="cursor-pointer hover:text-[#91AC8F] mt-2 text-xs text-gray-600">Forgot password?</p>
+                            <p className="cursor-pointer hover:text-[#4B5945] mt-2 text-xs text-gray-600" onClick={() => navigate('/login')}>Login to my Account</p>
+                        </div>
+                        <div className="mt-6">
+                            <button className="bg-[#525B44] hover:bg-[#5A6C57] p-3 text-white w-full">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </>
     );
 };
 
