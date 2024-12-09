@@ -16,6 +16,7 @@ const UserManagement = () => {
     const [isChecked, setIsChecked] = useState(false)
     const { searchTerm } = useSearchStore();
     const [error, setError] = useState(false)
+    const roles_data = { Buyer: "retailer", Seller: "wholesaler", Transporter: "dispatch" }
 
     const authToken = localStorage.getItem("token");
 
@@ -74,7 +75,37 @@ const UserManagement = () => {
         setIsModalOpen(false);
     };
 
-    const handleSaveChanges = async () => { }
+    const handleSaveChanges = async () => {
+        if (selectedUser) {
+
+            try {
+                const payload = {
+                    email: selectedUser['email'],
+                    first_name: selectedUser['first_name'],
+                    middle_name: selectedUser['middle_name'],
+                    last_name: selectedUser['last_name'],
+                    address: selectedUser['address'],
+                    phone: selectedUser['phone'],
+                    is_active: true,
+                    is_admin: false,
+                    role: roles_data[selectedUser['role']],
+                };
+
+                const res = await axios.patch(
+                    `${REACT_APP_BACKEND_API_BASE_URL}/auth/users/${selectedUser.id}/`,
+                    payload, { headers: { 'Content-Type': 'application/json' } }
+                )
+                setUsers((prev) =>
+                    prev.map((user) => (user.id === selectedUser.id ? selectedUser : user))
+                );
+                handleCloseModal();
+
+            } catch (err) {
+                console.error("Error updating user:", err.response?.data);
+            }
+        }
+
+    };
 
     return (
         <>
@@ -83,20 +114,20 @@ const UserManagement = () => {
                     <p>This page is not available, Kindly contact admin</p>
                 </div> :
                 <div className="bg-white p-6 w-full">
-                    <div className="border-b border-gray-400 flex justify-start">
+                    <div className="border-b border-gray-400 flex justify-start py-2">
                         <div className="flex w-[50px]">
                             <p></p>
                         </div>
-                        <div className="flex w-3/12">
+                        <div className="flex text-xs uppercase w-3/12">
                             <p>Full Name</p>
                         </div>
-                        <div className="flex mx-2 w-3/12">
+                        <div className="flex mx-2 text-xs uppercase w-3/12">
                             <p>Email</p>
                         </div>
-                        <div className="flex mx-2 w-1/5">
+                        <div className="flex mx-2 text-xs uppercase w-1/5">
                             <p>Phone</p>
                         </div>
-                        <div className="flex">
+                        <div className="flex text-xs uppercase">
                             <p>Role</p>
                         </div>
                     </div>
@@ -239,9 +270,9 @@ const UserManagement = () => {
                                                 }
                                                 className="border outline-[#5A6C57] p-2 w-full bg-white"
                                             >
-                                                <option value="buyer">Buyer</option>
-                                                <option value="wholesaler">Seller</option>
-                                                <option value="dispatch">Dispatch</option>
+                                                <option value="Buyer">Buyer</option>
+                                                <option value="Wholesaler">Seller</option>
+                                                <option value="Transporter">Transporter</option>
                                             </select>
                                         </div>
                                     </div>

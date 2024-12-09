@@ -50,7 +50,7 @@ const Profile = () => {
                 <div className='flex justify-between mx-4 w-full'>
                     <div>
                         <p className=''>{user?.first_name} {user?.last_name}</p>
-                        <p className='font-thin text-[#85A98F] text-sm'>{user?.email}</p>
+                        <p className='font-thin text-[#85A98F]'>{user?.email}</p>
                         <p className='text-sm'>{user?.phone}</p>
                     </div>
                 </div>
@@ -72,27 +72,27 @@ const Profile = () => {
                     <div className='flex gap-10 mb-2 py-4'>
                         <div className='flex flex-col'>
                             <label htmlFor="First Name" className='font-[500] text-xs text-[#85A98F] uppercase'>First Name</label>
-                            <p className='text-[#335] text-xl'>{user?.first_name || '----- -----'}</p>
+                            <p className='text-[#335] text-lg'>{user?.first_name || '----- -----'}</p>
                         </div>
                         <div className='flex flex-col'>
                             <label htmlFor="First Name" className='font-[500] text-xs text-[#85A98F] uppercase'>Last Name</label>
-                            <p className='text-[#335] text-xl'>{user?.last_name || '----- -----'}</p>
+                            <p className='text-[#335] text-lg'>{user?.last_name || '----- -----'}</p>
                         </div>
                     </div>
                     <div className='flex gap-10 mb-2 py-4'>
                         <div className='flex flex-col'>
                             <label htmlFor="Email" className='font-[500] text-xs text-[#85A98F] uppercase'>Email</label>
-                            <p className='text-[#335] text-xl'>{user?.email || '----- ----- ---- ----'}</p>
+                            <p className='text-[#335] text-lg'>{user?.email || '----- ----- ---- ----'}</p>
                         </div>
                     </div>
                     <div className='flex gap-[3rem] mb-2 py-4'>
                         <div className='flex flex-col'>
                             <label htmlFor="Phone" className='font-[500] text-xs text-[#85A98F] uppercase'>Phone</label>
-                            <p className='text-[#335] text-xl'>{user?.phone || '----- -----'}</p>
+                            <p className='text-[#335] text-lg'>{user?.phone || '----- -----'}</p>
                         </div>
                         <div className='flex flex-col'>
                             <label htmlFor="Address" className='font-[500] text-xs text-[#85A98F] uppercase'>Address</label>
-                            <p className='text-[#335] text-xl'>{user?.address || '----- -----'}</p>
+                            <p className='text-[#335] text-lg'>{user?.address || '----- -----'}</p>
                         </div>
                     </div>
                 </div>
