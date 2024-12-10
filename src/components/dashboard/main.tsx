@@ -2,7 +2,6 @@ import React from 'react'
 import { IoSearchOutline } from "react-icons/io5";
 import { getGreeting } from './helpers';
 import { FaSackDollar } from 'react-icons/fa6';
-import SearchBox from '../navigation/Search';
 import WelcomeBox from '../navigation/Welcome';
 
 const DashboardMain = () => {
@@ -19,7 +18,6 @@ const DashboardMain = () => {
 
             <div className="flex items-end justify-between">
                 <WelcomeBox />
-                <SearchBox />
             </div>
 
 

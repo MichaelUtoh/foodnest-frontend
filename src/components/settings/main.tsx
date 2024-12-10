@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import WelcomeBox from '../navigation/Welcome';
-import SearchBox from '../navigation/Search';
 import Profile from './profile';
 import Security from './security';
 import UserManagement from './users';
@@ -33,7 +32,6 @@ const DashboardSettings = () => {
 
             <div className="flex items-end justify-between">
                 <WelcomeBox />
-                <SearchBox />
             </div>
 
             <div className='flex mt-4'>
