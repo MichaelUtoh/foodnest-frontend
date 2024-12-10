@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { REACT_APP_BACKEND_API_BASE_URL } from '../../../config';
 import axios from 'axios'
 import WelcomeBox from '../navigation/Welcome';
-import SearchBox from '../navigation/Search';
 import { Product } from '../types/products';
 import { getStatusClass, toTitle } from '../dashboard/helpers';
 import { ProductCard } from './cards';
@@ -43,7 +42,6 @@ const Products = () => {
         <div className="border-l border-gray-300 flex flex-col py-4 p-6 w-full">
             <div className="custom-header">
                 <WelcomeBox />
-                <SearchBox />
             </div>
 
             <div className='flex mt-4'>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import WelcomeBox from '../navigation/Welcome';
-import SearchBox from '../navigation/Search';
 
 const InventoryComponent = () => {
 
@@ -9,7 +8,6 @@ const InventoryComponent = () => {
 
             <div className="flex items-end justify-between">
                 <WelcomeBox />
-                <SearchBox />
             </div>
 
             <div className='bg-white flex mt-4 h-full'>

@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import WelcomeBox from '../navigation/Welcome'
-import SearchBox from '../navigation/Search'
 import NavBar from '../navigation/NavBar'
-import Sidebar from '../dashboard/sidebar'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { REACT_APP_BACKEND_API_BASE_URL } from '../../../config'
