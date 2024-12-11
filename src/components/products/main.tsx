@@ -5,6 +5,7 @@ import WelcomeBox from '../navigation/Welcome';
 import { Product } from '../types/products';
 import { getStatusClass, toTitle } from '../dashboard/helpers';
 import { ProductCard } from './cards';
+import useSearchStore from '../../../store/searchStore';
 
 const Products = () => {
     const productCategories = ['beans', 'rice', 'yam', 'flour', 'cassava', 'mango', 'orange', 'watermelon', 'locust beans']
@@ -12,6 +13,8 @@ const Products = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
+    const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+    const { searchTerm } = useSearchStore();
 
     const handleCheckboxChange = (type: "category" | "status", value: string) => {
         if (type === "category") {
@@ -37,6 +40,15 @@ const Products = () => {
 
         fetchProducts();
     }, [])
+
+    useEffect(() => {
+        setFilteredProducts(
+            products.filter(
+                (prd) =>
+                    prd.name.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+        );
+    }, [searchTerm, products]);
 
     return (
         <div className="border-l border-gray-300 flex flex-col py-4 p-6 w-full">
@@ -99,7 +111,7 @@ const Products = () => {
 
                 {/* Products Grid */}
                 {products.length > 0 ? <div className='custom-card-wrap h-[780px] overflow-scroll w-10/12'>
-                    {products.map((product) => (
+                    {filteredProducts.map((product) => (
                         <ProductCard key={product?.id} product={product} getStatusClass={getStatusClass} />
                     ))}
                 </div> :
