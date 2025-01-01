@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { REACT_APP_BACKEND_API_BASE_URL } from '../../../config'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import useUserStore from "../../../store/userStore";
 
 const LoginForm: React.FC = () => {
+    const setUserDetails = useUserStore((state) => state.setUserDetails);
     const inputForm = ['Email', 'Password']
     const [formValues, setFormValues] = useState<{ [key: string]: string | undefined }>({});
     const [loading, setLoading] = useState(false);
@@ -29,10 +31,24 @@ const LoginForm: React.FC = () => {
                 password: formValues["Password"],
             }, { headers: { 'Content-Type': 'application/json' } });
 
+            const userData = {
+                id: response.data.id,
+                first_name: response.data.first_name,
+                middle_name: response.data?.middle_name,
+                last_name: response.data.last_name,
+                email: response.data.email,
+                phone: response.data.phone,
+                address: response.data.address,
+                role: response.data.role,
+                image_url: response.data.image_url,
+                mfa_enabled: response.data.mfa_enabled,
+            };
+
             const { id, access_token, refresh_token, email } = response.data;
             localStorage.setItem("id", id);
             localStorage.setItem("token", access_token);
             localStorage.setItem("user_id", id);
+            setUserDetails(userData);
             toast.success("Login Successful!");
             setFormValues({});
             navigate("/dashboard");

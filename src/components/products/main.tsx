@@ -9,24 +9,26 @@ import useSearchStore from '../../../store/searchStore';
 
 const Products = () => {
     const productCategories = ['beans', 'rice', 'yam', 'flour', 'cassava', 'mango', 'orange', 'watermelon', 'locust beans']
-    const productStatus = ['available', 'unavailable']
+    const productStatus = ['available', 'unavailable', 'out of stock']
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const { searchTerm } = useSearchStore();
 
-    const handleCheckboxChange = (type: "category" | "status", value: string) => {
-        if (type === "category") {
+    const handleCheckboxChange = (name: string, value: string) => {
+        if (name === "category") {
             setSelectedCategories((prev) =>
-                prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
+                prev.includes(value) ? prev.filter((cat) => cat !== value) : [...prev, value]
             );
-        } else if (type === "status") {
+        } else if (name === "status") {
             setSelectedStatuses((prev) =>
                 prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
             );
         }
+
     };
+
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -43,12 +45,20 @@ const Products = () => {
 
     useEffect(() => {
         setFilteredProducts(
-            products.filter(
-                (prd) =>
-                    prd.name.toLowerCase().includes(searchTerm.toLowerCase())
-            )
+            products.filter((prd) => {
+                const matchesSearch = prd.name.toLowerCase().includes(searchTerm.toLowerCase());
+                const matchesCategory =
+                    selectedCategories.length === 0 ||
+                    selectedCategories.some((cat) =>
+                        prd.name.toLowerCase().split(" ").some((word) => word === cat.toLowerCase())
+                    );
+                const matchesAvailability =
+                    selectedStatuses.length === 0 ||
+                    selectedStatuses.includes(prd.status.toLowerCase());
+                return matchesSearch && matchesCategory && matchesAvailability;
+            })
         );
-    }, [searchTerm, products]);
+    }, [searchTerm, selectedCategories, selectedStatuses, products]);
 
     return (
         <div className="border-l border-gray-300 flex flex-col py-4 p-6 w-full">

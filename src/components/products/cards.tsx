@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { GiPowderBag } from 'react-icons/gi';
 
 export const ProductCard = ({ product, getStatusClass }: ProductCardType) => {
-    console.log(product);
-
     const navigate = useNavigate();
     const handleClick = () => {
         navigate(`/products/${product.id}`);
