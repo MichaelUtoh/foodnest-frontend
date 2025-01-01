@@ -27,5 +27,6 @@ export type UserType = {
     role: string;
     is_active: boolean;
     created_at: string;
-    image_url?: string
+    image_url?: string;
+    mfa_enabled?: boolean;
 };

@@ -3,7 +3,7 @@ import WelcomeBox from '../navigation/Welcome';
 import Profile from './profile';
 import Security from './security';
 import UserManagement from './users';
-import Notiification from './notification';
+import Notification from './notification';
 import Upload from './upload';
 
 const DashboardSettings = () => {
@@ -19,7 +19,7 @@ const DashboardSettings = () => {
             case 'Users':
                 return <UserManagement />;
             case 'Notification':
-                return <Notiification />;
+                return <Notification />;
             case 'Upload':
                 return <Upload />;
             default:

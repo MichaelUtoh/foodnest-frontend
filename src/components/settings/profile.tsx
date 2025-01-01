@@ -20,9 +20,7 @@ const Profile = () => {
         const fetchUserDetails = async () => {
             try {
                 const response = await axios.get(`${REACT_APP_BACKEND_API_BASE_URL}/auth/users/${userId}/`, {
-                    headers: {
-                        Authorization: `Bearer ${authToken}`,
-                    },
+                    headers: { Authorization: `Bearer ${authToken}` },
                 });
                 setUser(response.data);
             } catch (error) {

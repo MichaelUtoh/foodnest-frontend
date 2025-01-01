@@ -6,10 +6,6 @@ import useSearchStore from '../../../store/searchStore';
 const SearchBox = () => {
     const { searchTerm, setSearchTerm } = useSearchStore();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(e.target.value); // Update global state
-    };
-
     return (
         <div className="bg-white flex h-[50px] items-center w-full md:w-6/12 lg:w-4/12">
             <div className="cursor-pointer p-2">

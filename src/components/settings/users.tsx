@@ -13,7 +13,6 @@ const UserManagement = () => {
     const [filteredUsers, setFilteredUsers] = useState<UserType[]>([]);
     const [selectedUser, setSelectedUser] = useState<UserType | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isChecked, setIsChecked] = useState(false)
     const { searchTerm } = useSearchStore();
     const [error, setError] = useState(false)
     const roles_data = { Buyer: "retailer", Seller: "wholesaler", Transporter: "dispatch" }

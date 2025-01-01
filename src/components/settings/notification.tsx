@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Notiification = () => {
+const Notification = () => {
     return (
         <div>
-            <h1>Notiification Settings</h1>
+            <h1>Notification Settings</h1>
         </div>
     )
 }
 
-export default Notiification;
+export default Notification;
